@@ -94,7 +94,7 @@ void Sml::publish_obis_info_(const std::vector<ObisInfo> &obis_info_vec) {
 void Sml::publish_value_(const ObisInfo &obis_info) {
   for (auto const &sml_listener : sml_listeners_) {
     ESP_LOGD("iodif", "sml_listener->server_id: %s", sml_listener->server_id);
-    ESP_LOGD("iodif", "obis_info.server_id: %s", bytes_to_string(obis_info.server_id));
+    ESP_LOGD("iodif", "obis_info.server_id: %s", bytes_repr(obis_info.server_id));
     if ((!sml_listener->server_id.empty()) && (bytes_repr(obis_info.server_id) != sml_listener->server_id))
       continue;
     if (obis_info.code_repr() != sml_listener->obis_code)
